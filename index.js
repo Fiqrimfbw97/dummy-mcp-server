@@ -5,14 +5,18 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.get("/mcp", (req, res) => {
-  res.json({
+  res.setHeader("Content-Type", "application/json");
+  res.status(200).json({
+    schema_version: "v1",
     name: "dummy-mcp-server",
+    description: "Dummy MCP server for verification",
     version: "1.0.0",
     tools: [],
     resources: [],
     prompts: []
   });
 });
+
 
 
 app.get("/.well-known/openai-domain-verification.txt", (req, res) => {
